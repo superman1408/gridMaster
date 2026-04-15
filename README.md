@@ -213,7 +213,8 @@ By building this project, you understand:
 
 # 📜 License
 
-This project is open-source and free to use.
+superman1408/gridMaster is licensed under the
+Apache License 2.0
 
 ---
 
@@ -224,17 +225,6 @@ Inspired by classic Tic-Tac-Toe implementations and game theory concepts.
 ---
 
 ## ⭐ If you like this project, consider giving it a star!
-
-
-
-
-
-
-
-
-
-
-
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
