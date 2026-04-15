@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import Board from '../components/board/Board'
 import './Game.css' 
+import { getBestMove } from '../utils/aimove';
 
 
 
@@ -18,16 +19,44 @@ export default function Game() {
 
   const currentSquare = history[currentMove].squares;
 
+  // function handlePlay(nextSquare, moveIndex) {
+  //   // console.log("handle Play function");
+  //   const nextHistory = [
+  //     ...history.slice(0, currentMove + 1),
+  //     { squares: nextSquare, move: moveIndex },
+  //   ];
+  //   setHistory(nextHistory);
+  //   setCurrentMove(nextHistory.length - 1);
+  //   // setXIsNext(!xIsNext);
+  // }
+
   function handlePlay(nextSquare, moveIndex) {
-    // console.log("handle Play function");
     const nextHistory = [
       ...history.slice(0, currentMove + 1),
       { squares: nextSquare, move: moveIndex },
     ];
+
     setHistory(nextHistory);
     setCurrentMove(nextHistory.length - 1);
-    // setXIsNext(!xIsNext);
+
+    // 🤖 AI TURN (after player X)
+    setTimeout(() => {
+      const aiMove = getBestMove(nextSquare.slice(), true).move;
+
+      if (aiMove !== undefined) {
+        const aiSquares = nextSquare.slice();
+        aiSquares[aiMove] = "O";
+
+        setHistory((prev) => [
+          ...prev,
+          { squares: aiSquares, move: aiMove },
+        ]);
+
+        setCurrentMove((prev) => prev + 1);
+      }
+    }, 500); // delay for realism
   }
+
 
   function jumpTo(nextMove) {
     /*to do */

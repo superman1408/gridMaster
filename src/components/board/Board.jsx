@@ -1,7 +1,7 @@
 import React from "react";
 import Square from "../square/Square";
 import "./Board.css";
-import { calculateWinner } from "../../utils/CalculateWinner";
+import { calculateWinner } from "../../utils/gameLogic";
 
 
 export default function Board({ xIsNext, squares, onPlay }) {
